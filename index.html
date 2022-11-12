@@ -18,34 +18,39 @@
       <div class="inner">
 
         <header>
-          <h1><span class="prefix">nd</span>json <span class="subtitle">Newline Delimited JSON</span></h1>
+          <h1><span class="prefix">hd</span>json <span class="subtitle">Human-Delimited/High-Def JSON</span></h1>
         </header>
 
         <nav><ul>
           <li>Home</li>
-          <li><a href="https://github.com/ndjson/ndjson-spec">Spec</a></li>
+          <li><a href="https://github.com/csaftoiu/hdjson-spec">Spec</a></li>
           <li><a href="libraries.html">Libraries</a></li>
         </ul></nav>
 
         <hr>
 
         <section id="main_content">
-<p>This page describes the ndjson format, also called Newline delimited JSON.
-NDJSON is a convenient format for storing or streaming
-structured data that may be processed one record at a time. It works well with unix-style
-text processing tools and shell pipelines. It's a great format for log files.
-It's also a flexible format for passing messages between cooperating processes.</p>
+<p>This page describes the hdjson format, also called Human-Delimited JSON and High-Def JSON.
+HDJSON is a convenient format for storing or streaming
+structured data that may be processed one record at a time, when readability is also
+an important factor. Consider the case of looking at protocol data where you want to be 
+able to read the file and figure out what happened.
+ 
+It is equivalent to NDJSON except for two features:
+<ul>
+  <li>The JSON is pretty-printed, i.e. with newlines and indentation in the data.</li>
+  <li>Each JSON entry in the file is separated by a single line consisting solely of the character `-`.</li>
+</ul>
+</p>
 
 <h3>
-<a name="line-separator-is-n" class="anchor" href="#line-separator-is-n"><span class="octicon octicon-link"></span></a>
-1. Line Separator is <code>'\n'</code>
+<a name="line-separator-is-dash" class="anchor" href="#line-separator-is-dash"><span class="octicon octicon-link"></span></a>
+  1. Line Separator is <code>'\n-----\n'</code> or <code>'\r\n-----\r\n'</code>.
 </h3>
 
-<p>This means <code>'\r\n'</code> is also supported because trailing white space is ignored when parsing JSON values.</p>
-
 <h3>
-<a name="each-line-is-a-valid-json-value" class="anchor" href="#each-line-is-a-valid-json-value"><span class="octicon octicon-link"></span></a>
-2. Each Line is a Valid JSON Value
+<a name="each-chunk-is-a-valid-json-value" class="anchor" href="#each-chunk-is-a-valid-json-value"><span class="octicon octicon-link"></span></a>
+2. Each Chunk (i.e. in between two delimiters) is a Valid JSON Value
 </h3>
 
 <p>The most common values will be objects or arrays, but any JSON value is permitted. See <a href="http://json.org/">json.org</a> for more information about JSON values.</p>
@@ -53,9 +58,9 @@ It's also a flexible format for passing messages between cooperating processes.<
 </section>
         <footer>
 
-          <a href="https://github.com/ndjson">NDJSON on GitHub</a> &bull;
+          <a href="https://github.com/csaftoiu/hdjson-spec">HDJSON on GitHub</a> &bull;
           Based on a theme by <a href="https://twitter.com/jasonlong">Jason Long</a> &bull;
-          Site forked from <a href="http://jsonlines.org">jsonlines.org</a>
+          Site forked from <a href="http://ndjson.org/">ndjson.org</a>
         </footer>
 
         
